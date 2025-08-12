@@ -3,22 +3,39 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Carte Interactive IA - Tyrosse</title>
+    <title>Carte IA - Tyrosse</title>
     <style>
-        body { font-family: Arial, sans-serif; text-align: center; background-color: #f4f4f4; }
-        h1 { color: #d62828; }
-        img { max-width: 90%; margin: 20px auto; border: 2px solid #ccc; }
-        .caption { font-size: 1.2em; margin-bottom: 30px; }
+        body { font-family: Arial, sans-serif; text-align: center; padding: 20px; background-color: #f4f4f4; }
+        h1 { color: #333; }
+        input[type="text"] { padding: 10px; width: 300px; font-size: 16px; }
+        button { padding: 10px 20px; font-size: 16px; margin-left: 10px; cursor: pointer; }
+        #result { margin-top: 20px; font-size: 18px; color: #0066cc; }
+        img { max-width: 100%; height: auto; margin-top: 20px; border: 1px solid #ccc; }
     </style>
 </head>
 <body>
-    <h1>Carte Interactive IA - Saint-Vincent-de-Tyrosse</h1>
-    <p class="caption">Découvrez les zones à forte croissance immobilière d'ici 2030</p>
+    <h1>📍 Carte IA - Saint-Vincent-de-Tyrosse</h1>
+    <p>Entrez votre adresse pour savoir si vous êtes en zone rouge ou bleue :</p>
+    <input type="text" id="adresse" placeholder="Ex : 12 rue Canopée">
+    <button onclick="verifierAdresse()">Vérifier</button>
+    <div id="result"></div>
     <img src="RandomFileName_8a759302-7e29-4a03-98d8-27827126f7b1.png" alt="Carte IA">
     <img src="RandomFileName_48315c7c-5a27-4a3d-b595-696845844809.png" alt="Visuel Réseaux Sociaux">
-    <p class="caption">🏡 Votre maison est-elle dans une zone rouge ou bleue ?<br>
-    📍 Saint-Vincent-de-Tyrosse 40230<br>
-    📈 Découvrez si sa valeur va exploser d’ici 2030 !<br>
-    💬 Envoyez-moi votre adresse pour le savoir.</p>
+
+    <script>
+        function verifierAdresse() {
+            var adresse = document.getElementById("adresse").value.toLowerCase();
+            var result = document.getElementById("result");
+            if (adresse.includes("canopée") || adresse.includes("aquila")) {
+                result.innerHTML = "✅ Votre adresse est en zone rouge (forte hausse attendue)";
+            } else if (adresse.includes("tyrosse") || adresse.includes("40230")) {
+                result.innerHTML = "ℹ️ Votre adresse est en zone bleue (stable)";
+            } else if (adresse.trim() === "") {
+                result.innerHTML = "❗ Veuillez entrer une adresse valide.";
+            } else {
+                result.innerHTML = "❓ Adresse non reconnue. Veuillez vérifier.";
+            }
+        }
+    </script>
 </body>
 </html>
